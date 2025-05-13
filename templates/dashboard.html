@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Your Flowers - Flower App{% endblock %}
+{% block content %}
+
+
+<h3>Explore Flower Images</h3>
+<a href="{{ url_for('explore') }}" class="btn btn-primary mb-4">Explore Flowers</a>  
+
+<h3>Add new flowers to your gallery</h3>
+<a href="{{ url_for('create') }}" class="btn btn-primary mb-4">Add Flowers</a>  
+
+
+
+<h3>Your Flowers</h3>
+{% if flowers %}
+    <div class="row">
+    {% for name, image_url in flowers %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ image_url }}" alt="{{ name }}" class="card-img-top" style="max-height:200px; object-fit:cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ name }}</h5>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% else %}
+    <p>You haven't added any flowers yet.</p>
+{% endif %}
+{% endblock %}

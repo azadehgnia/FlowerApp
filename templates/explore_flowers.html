@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Explore Flowers - Flower App{% endblock %}
+{% block content %}
+<h1 class="mb-4">Explore Flower Images</h1>
+<a href="{{ url_for('index') }}" class="btn btn-secondary mb-4">Back to Dashboard</a>
+<div class="row">
+    {% for name, image_url in flowers %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ image_url }}" alt="{{ name }}" class="card-img-top" style="max-height:300px; object-fit:cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ name }}</h5>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

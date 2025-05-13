@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Upload Flowers{% endblock %}
+{% block content %}
+<h2 class="mb-4">You can add new flowers and their images here {{ current_user.id }}!</h2>
+
+<h3>Add a New Flower</h3>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endwith %}
+<form method="post" action="{{ url_for('upload') }}" enctype="multipart/form-data" class="mb-4">
+    <div class="mb-3">
+        <label for="flower_name" class="form-label">Flower Name:</label>
+        <input type="text" name="flower_name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="flower_image" class="form-label">Flower Picture:</label>
+        <input type="file" name="flower_image" class="form-control" accept="image/*" required>
+    </div>
+    <button type="submit" class="btn btn-success">Upload</button>
+</form>
+
+<h3>Your Flowers</h3>
+{% if flowers %}
+    <div class="row">
+    {% for name, image_url in flowers %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ image_url }}" alt="{{ name }}" class="card-img-top" style="max-height:200px; object-fit:cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ name }}</h5>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% else %}
+    <p>You haven't added any flowers yet.</p>
+{% endif %}
+{% endblock %}
