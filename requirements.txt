@@ -3,3 +3,4 @@ Flask-Login
 psycopg2-binary  
 azure-storage-blob
 python-dotenv
+gunicorn
