@@ -153,6 +153,7 @@ def explore():
     conn.close()
 
       # Generate SAS URLs for each image
+      #for the SAS to work allow network connectivity and allow key access.
     sas_flowers = []
     for name, image_url in flowers:
         blob_name = image_url.split('/')[-1]

@@ -22,7 +22,7 @@ __pycache__/
 *$py.class  
 
 *.zip
-  
+localenv.md  
 # C extensions  
 *.so  
   
