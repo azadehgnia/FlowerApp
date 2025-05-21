@@ -4,5 +4,5 @@ psycopg2-binary
 azure-storage-blob
 python-dotenv
 gunicorn
-glibc=2.33
+
  
