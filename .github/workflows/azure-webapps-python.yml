@@ -7,7 +7,8 @@ on:
 
 env:  
   AZURE_WEBAPP_NAME: az-flower-app   # set this to your App Service name  
-  PYTHON_VERSION: '3.11'  
+  PYTHON_VERSION: '3.11'
+  STARTUP_COMMAND: 'gunicorn --bind=0.0.0.0:8000 --timeout 600 app:app'  
 
 jobs:
   build-and-deploy:
@@ -36,6 +37,10 @@ jobs:
 
       - name: Install dependencies
         run: |
+          sudo apt install python${{ env.PYTHON_VERSION }}-venv
+          python -m venv --copies antenv
+          source antenv/bin/activate
+          pip install setuptools
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
@@ -48,4 +53,10 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}     # Your Azure Web App name
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: release.zip 
+          package: release.zip
+          startup-command: ${{ env.STARTUP_COMMAND }} 
+      
+      # Azure logout
+      - name: logout
+        run: |
+          az logout
