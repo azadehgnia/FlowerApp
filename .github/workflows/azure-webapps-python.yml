@@ -41,7 +41,7 @@ jobs:
 
       - name: Zip files for deployment
         run: |
-          zip -r release.zip . -x "venv*" "venvf*" "*.md" "*.env" "*.git*" "*.zip"
+          zip -r release.zip . -x "venvf*" "*.md" "*.git*" "*.zip"
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
