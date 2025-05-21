@@ -45,6 +45,7 @@ jobs:
 
       - name: Zip files for deployment
         run: |
+          rm -rf venv venvf antenv
           zip -r release.zip . -x "venvf*" "*.md" "*.git*" "*.zip"
 
       - name: Deploy to Azure Web App
