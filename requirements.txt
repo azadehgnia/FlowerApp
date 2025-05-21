@@ -1,5 +1,5 @@
-Flask  
-Flask-Login  
+flask  
+flask-login  
 psycopg2-binary  
 azure-storage-blob
 python-dotenv
