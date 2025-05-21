@@ -9,13 +9,15 @@ from datetime import datetime, timedelta
 import uuid
 from dotenv import load_dotenv  
 
-load_dotenv("env/.env")  
   
 import os  
 SECRET_KEY = os.getenv("SECRET_KEY")  
-  
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  
+
+load_dotenv(os.path.join(BASE_DIR, "env", ".env"))
+
 # App setup  
-app = Flask(__name__)  
+app = Flask(__name__, template_folder=os.path.join(BASE_DIR, "templates"), static_folder=os.path.join(BASE_DIR, "static"))
 app.secret_key = 'YOUR_FLASK_SECRET_KEY'  # <<<< set this!  
   
 # Flask-Login setup  
