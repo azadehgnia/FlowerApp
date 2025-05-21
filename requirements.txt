@@ -4,4 +4,5 @@ psycopg2-binary
 azure-storage-blob
 python-dotenv
 gunicorn
-cryptography<41 
+glibc 2.33
+ 
