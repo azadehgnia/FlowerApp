@@ -68,7 +68,7 @@ python app.py
  
 
 Visit in your browser:
-Open http://localhost:5000
+Open http://localhost:5000 or 8000
 Login with your test credentials.
 Try uploading a flower as a test.
  
